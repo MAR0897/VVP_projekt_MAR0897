@@ -6,7 +6,13 @@ from planet import Planet
 
 CMAPS = ["Blues", "Reds", "Greens", "Purples", "Oranges", "Greys"]
 
+
 def plot(planets: List[Planet], print_mode: int, iter_n: int) -> None:
+    """plot(planets: List[Planet], print_mode: int, iter_n: int) -> None:
+    Decides whether to generate an image or a video.
+        For print_mode in <0,2> selects plot_image,
+        for print_mode = 3 selects plot_video.
+    """
     if 0 <= print_mode <= 2:
         plot_image(planets, iter_n, print_mode)
     elif print_mode == 3:
@@ -15,6 +21,13 @@ def plot(planets: List[Planet], print_mode: int, iter_n: int) -> None:
         raise ValueError("Invalid print_mode value!")
     
 def plot_image(planets: List[Planet], iter_n: int, print_mode: int) -> None:
+    """plot_image(planets: List[Planet], iter_n: int, print_mode: int) -> None:
+    Plots all planets trajectory in a graph, where the scale of both axis is the same.
+        For print_mode = 0 plots a curve for all planets,
+        for print_mode = 1 plots a simulation of Solar system (one object in the center represented with a marker for better visibility)
+        for print_mode = 2 plots a number of points using the function plt.scatter, whose colors follow a certain colormap,
+            which allows getting more information from the graph, such as start and end point (start is light, end is dark) or speed (from the color gradient).
+    """
     fig, ax = plt.subplots()
     for i, planet in enumerate(planets):
         if print_mode == 0:
@@ -33,6 +46,8 @@ def plot_image(planets: List[Planet], iter_n: int, print_mode: int) -> None:
     plt.show()
 
 def plot_video(planets: List[Planet], iter_n: int) -> None:
+    """plot_video(planets: List[Planet], iter_n: int) -> None:
+    Creates a .gif animation of the planets movement using FuncAnimation from matplotlib."""
     fig, ax = plt.subplots()
     ax.set_aspect('equal')
     def animate(frame):
@@ -42,11 +57,3 @@ def plot_video(planets: List[Planet], iter_n: int) -> None:
         plt.legend()
     anim = FuncAnimation(fig=fig, func=animate, frames=iter_n, interval=10000/iter_n)
     anim.save("animation.gif", writer="Pillow")
-
-def plot_instant(planets: List[Planet], it: int) -> None:
-    fig, ax = plt.subplots()
-    for i, planet in enumerate(planets):
-        ax.plot(planet.trajectory[0,it], planet.trajectory[1,it], marker="o", markersize=5, label=f"{planet.name}")
-    ax.axis('equal')
-    ax.legend()
-    plt.show()

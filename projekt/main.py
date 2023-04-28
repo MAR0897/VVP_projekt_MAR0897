@@ -32,12 +32,11 @@ for name, data in init_data.items():
         planet = Planet.random(name, norm(data["position"]), norm(data["velocity"]), data["mass"], iter_n)
     planets.append(planet)
 
-
 #MOVING PLANETS
 degenerated = False
 for i in range(iter_n):
     Planet.update_coords(Planet, planets, i, dt)
-    if i%100 == 0:
+    if print_mode!=1 and i%100==0:
         for planet in planets:
             if Planet.is_too_far(planet):
                 print("Simulation probably degenerated")
