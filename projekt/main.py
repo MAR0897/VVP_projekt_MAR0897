@@ -16,15 +16,15 @@ parser.add_argument("--print_mode", type=int, default=0, help="printing mode: 0 
 parser.add_argument("--random", type=int, default=0, help="randomized initial planet parameters")
 args = parser.parse_args()
 
-iter_n = args.n
-print_mode = args.print_mode
-dt = args.timestep
-planets = []
+iter_n: int = args.n
+print_mode: int = args.print_mode
+dt: float = args.timestep
+planets: list = []
 
 
 #READING FROM FILE, CLASS INITIALIZATION
 with open(args.input_file, "r") as file:
-    init_data : dict = json.load(file)
+    init_data: dict = json.load(file)
 for name, data in init_data.items():
     if args.random == 0:
         planet = Planet(name, data["position"], data["velocity"], data["mass"], iter_n)
@@ -36,7 +36,7 @@ for name, data in init_data.items():
 degenerated = False
 for i in range(iter_n):
     Planet.update_coords(Planet, planets, i, dt)
-    if print_mode!=1 and i%100==0:
+    if print_mode!=1 and print_mode!=3 and i%100==0:
         for planet in planets:
             if Planet.is_too_far(planet):
                 print("Simulation probably degenerated")

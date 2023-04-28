@@ -53,7 +53,7 @@ def plot_video(planets: List[Planet], iter_n: int) -> None:
     def animate(frame):
         plt.cla()
         for planet in planets:
-                ax.plot(planet.trajectory[0,:frame], planet.trajectory[1,:frame], label=f"{planet.name}")
+                ax.plot(planet.trajectory[0,:frame*10], planet.trajectory[1,:frame*10], label=f"{planet.name}")
         plt.legend()
-    anim = FuncAnimation(fig=fig, func=animate, frames=iter_n, interval=10000/iter_n)
+    anim = FuncAnimation(fig=fig, func=animate, frames=int(iter_n/10), interval=10000/iter_n)
     anim.save("animation.gif", writer="Pillow")
