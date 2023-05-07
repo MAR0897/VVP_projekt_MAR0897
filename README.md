@@ -24,7 +24,7 @@ V souboru examples.ipynb se program dá spustit příkazem například:
 kde parametry jsou:
 - input_file – cesta ke inicializačnímu souboru
 - n – počet iterací
-- timestamp – čas pro každou iteraci v sekundách
+- timestep – čas pro každou iteraci v sekundách
 - print_mode – způsob vykreslení (1 pro spojitou křivku, 2 pro vykreslení bodů, 3 pro animaci)
 - random – 0 pro přesné parametry ze souboru, 1 pro částečnou nahodilost
 - container – 0 pro neomezenou simulaci, 1 pro kontrolu simulace, jestli planety na sebe ještě vůbec nějak působí a nerozlétly se pryč
