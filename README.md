@@ -29,8 +29,10 @@ kde parametry jsou:
 - random – 0 pro přesné parametry ze souboru, 1 pro částečnou nahodilost
 - container – 0 pro neomezenou simulaci, 1 pro kontrolu simulace, jestli planety na sebe ještě vůbec nějak působí a nerozlétly se pryč
 
+
+## Funkcionality
+
 Výstup simulace může být vykreslen jako obrázek nebo video.
 Vizualizace umožňuje zvolit způsob zobrazení trajektorií planet buď jako spojitou křivku s markery označující aktuální pozici planet, nebo jen body v prostoru, které mají určitou barevnou mapu a jde tedy vidět i rychlost planet v určitém úseku podle gradientu barvy.
-
 
 Pro více příkladů o použití projektu nahlédněte do souboru examples.ipynb.
