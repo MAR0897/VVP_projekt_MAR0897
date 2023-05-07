@@ -75,7 +75,7 @@ Current coords: {self.coords[0]}, {self.coords[1]}"""
         Checks if the simulation has degenerated (at least one of the planets got too far to visibly interact with other planets).
         The "too far" is set as a spherical container 10x the initial distance of the planet from the point (0,0). 
         Checks every 100 iterations.
-        Does not apply to Solar system simulation and animation (print mode 1 and 3)
+        Checking can be turned on by setting the variable container to 1.
         """
         distance = np.linalg.norm(self.coords)
         if distance > self.container_size:
