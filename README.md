@@ -23,15 +23,15 @@ sim.read_from_file("projekt/input_data/B3.json", False)
 sim.simulate(False)
 sim.plot_image(1)
 ```
-Je tedy třeba vytvořit simulaci s počtem iterací a časovým intervalem
+- Je tedy třeba vytvořit simulaci s počtem iterací a časovým intervalem
 ```Simulation(počet iterací(100), časový interval(86400))```
-Pak načíst vstupní data ze souboru
+- Pak načíst vstupní data ze souboru
 ```read_from_file(vstupní JSON soubor, náhodné parametry?(False))```
-A nyní až můžeme simulovat
+- A nyní až můžeme simulovat
 ```simulate(bude program kontrolovat pohyb planet?(False))```
-A pak simulaci vykreslit do grafu (1 je mód vykreslení pro spojité křivky, 2 pro body)
+- A pak simulaci vykreslit do grafu (1 je mód vykreslení pro spojité křivky, 2 pro body)
 ```sim.plot_image(1 nebo 2)```
-Nebo ji naanimovat
+- Nebo ji naanimovat
 ```sim.plot_video(výstupní gif soubor("animation.gif")```
 
 
