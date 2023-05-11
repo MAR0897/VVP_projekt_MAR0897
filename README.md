@@ -6,9 +6,8 @@ Tento projekt simuluje gravitační síly mezi různými tělesy a vykresluje je
 ## Obsah knihovny
 
 - projekt
-  - main.py – hlavní funkce pro běh simulace
-  - planet.py – definice třídy Planet, výpočet gravitačních sil a updatování pozice planet
-  - plotting.py – funkce pro vykreslování výsledků simulace
+  - main.py – hlavní funkce pro běh simulace a její vykreslení, všechno ve třídě "Simulation"
+  - planet.py – definice třídy "Planet", výpočet gravitačních sil a updatování pozice planet
   - input_data – složka se soubory potřebnými pro inicializaci planet
     - SS8.json – celá sluneční soustava
     - SS4.json – pouze 4 Slunci nejbližší planety
@@ -17,17 +16,23 @@ Tento projekt simuluje gravitační síly mezi různými tělesy a vykresluje je
 
 ## Spuštění
 Ke spuštění simulace je nutné mít nainstalované knihovny NumPy a Matplotlib.
-V souboru examples.ipynb se program dá spustit příkazem například:
+V souboru examples.ipynb se program dá spustit například:
 ```     
-%run projekt/main.py --input_file "projekt/input_data/B3.json" --n 5000 --timestep 86400 --print_mode 2 --random 1 --container 1
+sim = Simulation(10000, 86400)
+sim.read_from_file("projekt/input_data/B3.json", False)
+sim.simulate(False)
+sim.plot_image(1)
 ```
-kde parametry jsou:
-- input_file – cesta ke inicializačnímu souboru
-- n – počet iterací
-- timestep – čas pro každou iteraci v sekundách
-- print_mode – způsob vykreslení (1 pro spojitou křivku, 2 pro vykreslení bodů, 3 pro animaci)
-- random – 0 pro přesné parametry ze souboru, 1 pro částečnou nahodilost
-- container – 0 pro neomezenou simulaci, 1 pro kontrolu simulace, jestli planety na sebe ještě vůbec nějak působí a nerozlétly se pryč
+Je tedy třeba vytvořit simulaci s počtem iterací a časovým intervalem
+```Simulation(počet iterací(100), časový interval(86400))```
+Pak načíst vstupní data ze souboru
+```read_from_file(vstupní JSON soubor, náhodné parametry?(False))```
+A nyní až můžeme simulovat
+```simulate(bude program kontrolovat pohyb planet?(False))```
+A pak simulaci vykreslit do grafu (1 je mód vykreslení pro spojité křivky, 2 pro body)
+```sim.plot_image(1 nebo 2)```
+Nebo ji naanimovat
+```sim.plot_video(výstupní gif soubor("animation.gif")```
 
 
 ## Funkcionality
