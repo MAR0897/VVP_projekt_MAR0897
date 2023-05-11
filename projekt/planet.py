@@ -23,7 +23,7 @@ class Planet:
     Methods:
         __str__(self) -> str:
     """
-    def __init__(self, name: str, pos: list, vel: list, mass: float, iter_n: int) -> None:
+    def __init__(self, name: str, pos: list, vel: list, mass: float, iter_n: int, random: bool) -> None:
         """__init__(self, name: str, pos: np.ndarray, vel: np.ndarray, mass: float, iter_n: int) -> None:
         Reads initial values of the planet parameters from JSON file.
         """
@@ -31,18 +31,12 @@ class Planet:
         self.mass = mass
         self.vel = np.array([vel[0], vel[1]])
         self.coords = np.array([pos[0], pos[1]])
+        if random:
+            self.vel = np.random.uniform(low=-np.linalg.norm(self.vel), high=np.linalg.norm(self.vel), size=2)
+            self.coords = np.random.uniform(low=-np.linalg.norm(self.coords), high=np.linalg.norm(self.coords), size=2)
         self.accel = np.zeros((2))
         self.trajectory = np.zeros((2, iter_n))
         self.container_size = 10*np.linalg.norm(self.coords)
-
-    @classmethod
-    def random(cls, name: str, max_distance: float, max_speed: float, mass: float, iter_n: int) -> 'Planet':
-        """random(cls, name: str, max_distance: float, max_speed: float, mass: float, iter_n: int) -> 'Planet':
-        Alternative class initialization with randomized parameters.
-        """
-        pos = np.random.uniform(low=-max_distance, high=max_distance, size=2)
-        vel = np.random.uniform(low=-max_speed, high=max_speed, size=2)
-        return cls(name, pos, vel, mass/2, iter_n)
 
     def __str__(self) -> str:
         """__str__(self) -> str:

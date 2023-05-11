@@ -46,10 +46,7 @@ class Simulation:
         with open(input_file, "r") as file:
             init_data: dict = json.load(file)
         for name, data in init_data.items():
-            if not random:
-                planet = Planet(name, data["position"], data["velocity"], data["mass"], self.iter_n)
-            else:
-                planet = Planet.random(name, norm(data["position"]), norm(data["velocity"]), data["mass"], self.iter_n)
+            planet = Planet(name, data["position"], data["velocity"], data["mass"], self.iter_n, random)
             self.planets.append(planet)
 
     def simulate(self, container: bool = False) -> None:
