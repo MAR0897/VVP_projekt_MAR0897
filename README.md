@@ -16,7 +16,7 @@ Tento projekt simuluje gravitační síly mezi různými tělesy a vykresluje je
 
 ## Spuštění
 Ke spuštění simulace je nutné mít nainstalované knihovny NumPy a Matplotlib.
-V souboru examples.ipynb se program dá spustit například:
+V souboru examples.ipynb se program dá spustit například tímto kódem:
 ```     
 sim = Simulation(10000, 86400)
 sim.read_from_file("projekt/input_data/B3.json", False)
